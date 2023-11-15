@@ -4,6 +4,12 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import {Counter} from "./Counter";
 import {List} from "./List";
+import RatingBar from "./RatingBar";
+import Image from "./Image";
+import ImageList from "./ImageList";
+import {Counters} from "./Counters";
+import {Form} from "./Form";
+import {Prodcus} from "./Prodcus";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -11,13 +17,7 @@ root.render(
 
     <>
 
-<Counter value={5} step={2} name="Counter 1"/>
-        <br/>
-<Counter value={-20} name={"Counter 2"}/>
-        <br/>
-<Counter name={"counter 3"} step={5} />
-
-        <List />
+<Prodcus/>
 
     </>
 
