@@ -10,6 +10,8 @@ import ImageList from "./ImageList";
 import {Counters} from "./Counters";
 import {Form} from "./Form";
 import {Prodcus} from "./Prodcus";
+import {Products2} from "./Products2";
+import {NewProduct} from "./NewProduct";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -17,7 +19,7 @@ root.render(
 
     <>
 
-<Prodcus/>
+<NewProduct/>
 
     </>
 

@@ -9,7 +9,8 @@ export function getData(page){
         return [{id:4,name:'Farasoo Keyboard',price:30000,quantity:3},
             {id:5,name:'Logitech Keyboard',price:25000,quantity:3},
             {id:6,name:'Asus Monitor',price:30000,quantity:5}]
+
 }
 export function getTotalPageCount(){
-    return 2;
+    return 3;
 }
