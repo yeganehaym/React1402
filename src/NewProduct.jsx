@@ -1,5 +1,8 @@
 import {useState} from "react";
 import Joi from 'joi'
+import {messages} from "./joi_translation";
+import {useNavigate} from "react-router-dom";
+
 export const NewProduct=(props)=>{
 
 
@@ -23,6 +26,9 @@ export const NewProduct=(props)=>{
         setProduct(p);
 
     }
+
+    const navigate=useNavigate()
+
     const save=(e)=>{
         e.preventDefault();
 
@@ -32,6 +38,8 @@ export const NewProduct=(props)=>{
 
 
         //save
+        navigate('/counter',{replace:true})
+
     }
 
     const schema=Joi.object({
@@ -39,14 +47,16 @@ export const NewProduct=(props)=>{
             .alphanum()
             .min(3)
             .max(30)
-            .required(),
+            .required()
+            .label('کد'),
         name:Joi.string()
             .alphanum()
             .min(3)
             .max(30)
-            .required(),
-        quantity:Joi.string()
-            .pattern(/^\d+$/)
+            .required()
+            .label('نام'),
+        quantity:Joi.number()
+            .integer()
             .required(),
         price:Joi.string()
             .pattern(/^\d+$/)
@@ -59,11 +69,39 @@ export const NewProduct=(props)=>{
     })
     const validate=()=>{
 
-        const result=schema.validate(product,{abortEarly:false,allowUnknown:true})
+        const result=schema.validate(product,
+            {abortEarly:false,allowUnknown:true,messages:messages,errors:{language:"en"}})
         console.log(result);
+
+
+        let validate=true;
+        if(result.error && result.error.details && result.error.details.length>0)
+        {
+            validate=false;
+            const details=result.error.details;
+            const errorMessages=details.map(error=> ({message:error.message,type:error.type,path:error.path[0]}));
+
+
+            setErrors(errorMessages);
+        }
+        return validate;
 
     }
 
+    const [errors,setErrors]=useState([]);
+
+    const get=name=>{
+
+        let value='';
+        for (let i=0;i<errors.length;i++)
+        {
+            if(errors[i].path==name){
+                value=errors[i].message;
+                break
+            }
+        }
+        return value;
+    }
     return(
         <>
         <div className={"card"}>
@@ -71,15 +109,28 @@ export const NewProduct=(props)=>{
                 <h1 className={"card-title"}>New Product</h1>
             </div>
             <div className={"card-body"}>
+
+                {
+                    errors && errors.length>0 &&
+                        <div className={"alert alert-danger"}>
+
+                                <ul>
+                                    {errors.map(err=><li key={err.message}>{err.message}</li>)}
+                                </ul>
+
+                        </div>
+                }
                 <form method={"post"} onSubmit={save}>
                     <div className={"form-group"}>
                      <label>Code:</label>
                     <input onInput={e=>updateValues(e)} className={"form-control"} type={"text"} name={"code"} value={product.code}/>
+                        <small className={"text-danger"}>{get('code')}</small>
                     </div>
 
                     <div className={"form-group"}>
                         <label>Name:</label>
                         <input onInput={e=>updateValues(e)} className={"form-control"} type={"text"} name={"name"} value={product.name}/>
+                        <small className={"text-danger"}>{get('name')}</small>
                     </div>
 
                     <div className={"form-group"}>

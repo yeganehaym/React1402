@@ -12,6 +12,9 @@ import {Form} from "./Form";
 import {Prodcus} from "./Prodcus";
 import {Products2} from "./Products2";
 import {NewProduct} from "./NewProduct";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Home} from "./Home";
+import {CheckParams} from "./CheckParams";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -19,7 +22,15 @@ root.render(
 
     <>
 
-<NewProduct/>
+        <BrowserRouter>
+            <Routes>
+                <Route path={"/counter"} element={<Home><Counter/></Home>} />
+                <Route path={"/counters"} element={<Home><Counters/></Home>} />
+                <Route path={"/"} element={<Home/>} />
+                <Route path={"/products/new"} element={<Home><NewProduct/></Home>} />
+                <Route path={"/p/:id/:name"} element={<Home><CheckParams/></Home>} />
+            </Routes>
+        </BrowserRouter>
 
     </>
 
