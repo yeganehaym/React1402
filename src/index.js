@@ -15,6 +15,7 @@ import {NewProduct} from "./NewProduct";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Home} from "./Home";
 import {CheckParams} from "./CheckParams";
+import {Songs} from "./Songs";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -29,6 +30,7 @@ root.render(
                 <Route path={"/"} element={<Home/>} />
                 <Route path={"/products/new"} element={<Home><NewProduct/></Home>} />
                 <Route path={"/p/:id/:name"} element={<Home><CheckParams/></Home>} />
+                <Route path={"/player"} element={<Songs/>} />
             </Routes>
         </BrowserRouter>
 

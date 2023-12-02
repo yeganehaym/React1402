@@ -1,0 +1,96 @@
+
+.media-controls {
+    align-items: center;
+    background: #fffaee;
+    border: 1px solid #fff3eb;
+    border-radius: 24px;
+    color: #565656;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 24px;
+    max-width: calc(100% - 24px * 2);
+    padding: 24px;
+    position: relative;
+}
+.media-controls:after {
+    border-radius: 24px;
+    box-shadow: 0 2px 2px rgba(255, 107, 0, 0.25), 0 4px 4px rgba(255, 107, 0, 0.2), 0 8px 8px rgba(255, 107, 0, 0.15), 0 16px 16px rgba(255, 107, 0, 0.1), 0 24px 24px rgba(255, 107, 0, 0.05);
+    content: '';
+    height: 100%;
+    left: 0;
+    mix-blend-mode: multiply;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+.media-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+}
+.media-button {
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    border-radius: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+@media (min-width: 421px) {
+    .media-button {
+        padding: 12px;
+    }
+}
+.button-icons {
+    background-color: #ffc399;
+    border-radius: 100%;
+    margin-bottom: 4px;
+    margin-top: auto;
+    padding: 16px;
+}
+.back-button .button-icons,
+.skip-button .button-icons {
+    background-color: transparent;
+    color: #919191;
+}
+.rewind-button .button-icons,
+.fast-forward-button .button-icons {
+    background: linear-gradient(to bottom left, #fff8e7, #ffe1cc);
+    color: #838383;
+}
+.play-button .button-icons {
+    background: linear-gradient(to bottom left, #ffffff, #fff8e7);
+    border: 1px solid #fff3eb;
+    box-shadow: -1px 1px 1px rgba(255, 195, 153, 0.25), 1px -1px 1px rgba(255, 255, 255, 0.25), -2px 2px 2px rgba(255, 195, 153, 0.2), 2px -2px 2px rgba(255, 255, 255, 0.2), -4px 4px 4px rgba(255, 195, 153, 0.15), 4px -4px 4px rgba(255, 255, 255, 0.15), -8px 8px 8px rgba(255, 195, 153, 0.1), 8px -8px 8px rgba(255, 255, 255, 0.1), -16px 16px 16px rgba(255, 195, 153, 0.05), 16px -16px 16px rgba(255, 255, 255, 0.05);
+    color: #f26600;
+    margin-bottom: 8px;
+    padding: 24px;
+}
+.button-text {
+    margin-top: auto;
+}
+.media-progress {
+    align-self: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.progress-bar-wrapper {
+    background-color: transparent;
+    border-radius: 12px;
+    box-shadow: inset -1px 1px 1px rgba(255, 195, 153, 0.25), inset 1px -1px 1px rgba(255, 255, 255, 0.25), inset -2px 2px 2px rgba(255, 195, 153, 0.2), inset 2px -2px 2px rgba(255, 255, 255, 0.2), inset -4px 4px 4px rgba(255, 195, 153, 0.15), inset 4px -4px 4px rgba(255, 255, 255, 0.15), inset -8px 8px 8px rgba(255, 195, 153, 0.1), inset 8px -8px 8px rgba(255, 255, 255, 0.1), inset -16px 16px 16px rgba(255, 195, 153, 0.05), inset 16px -16px 16px rgba(255, 255, 255, 0.05);
+    height: 12px;
+    margin-bottom: 8px;
+    margin-top: 24px;
+    position: relative;
+    width: 100%;
+}
+.progress-bar {
+    background: linear-gradient(to right, #fdd25f, #ff6b00);
+    border-radius: 12px;
+    box-shadow: none;
+    height: 12px;
+}
