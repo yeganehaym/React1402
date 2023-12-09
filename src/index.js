@@ -16,6 +16,9 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Home} from "./Home";
 import {CheckParams} from "./CheckParams";
 import {Songs} from "./Songs";
+import {Template} from "./Templates/Template";
+import {Login} from "./Login";
+import {AuthTemplate} from "./Templates/AuthTemplate";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -25,12 +28,13 @@ root.render(
 
         <BrowserRouter>
             <Routes>
-                <Route path={"/counter"} element={<Home><Counter/></Home>} />
-                <Route path={"/counters"} element={<Home><Counters/></Home>} />
-                <Route path={"/"} element={<Home/>} />
-                <Route path={"/products/new"} element={<Home><NewProduct/></Home>} />
-                <Route path={"/p/:id/:name"} element={<Home><CheckParams/></Home>} />
+                <Route path={"/counter"} element={<Template><Counter/></Template>} />
+                <Route path={"/counters"} element={<Template><Counters/></Template>} />
+                <Route path={"/"} element={<Template/>} />
+                <Route path={"/products/new"} element={<Template show={true}><NewProduct/></Template>} />
+                <Route path={"/p/:id/:name"} element={<Template><CheckParams/></Template>} />
                 <Route path={"/player"} element={<Songs/>} />
+                <Route path={"/login"} element={<AuthTemplate><Login/></AuthTemplate>} />
             </Routes>
         </BrowserRouter>
 
