@@ -8,8 +8,8 @@ export const Template=props=>{
 
     const navigate=useNavigate();
     useEffect(()=>{
-        if(!props.show || props.show==false)
-            navigate('/login')
+        //if(!props.show || props.show==false)
+          //  navigate('/login')
 
     },[])
     return(<>

@@ -19,6 +19,7 @@ import {Songs} from "./Songs";
 import {Template} from "./Templates/Template";
 import {Login} from "./Login";
 import {AuthTemplate} from "./Templates/AuthTemplate";
+import {Cal} from "./Cal";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -35,6 +36,7 @@ root.render(
                 <Route path={"/p/:id/:name"} element={<Template><CheckParams/></Template>} />
                 <Route path={"/player"} element={<Songs/>} />
                 <Route path={"/login"} element={<AuthTemplate><Login/></AuthTemplate>} />
+                <Route path={"/cal"} element={<Cal/>} />
             </Routes>
         </BrowserRouter>
 
