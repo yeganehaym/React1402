@@ -20,13 +20,14 @@ import {Template} from "./Templates/Template";
 import {Login} from "./Login";
 import {AuthTemplate} from "./Templates/AuthTemplate";
 import {Cal} from "./Cal";
+import {ToastContainer} from "react-toastify";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
     <>
-
+<ToastContainer />
         <BrowserRouter>
             <Routes>
                 <Route path={"/counter"} element={<Template><Counter/></Template>} />

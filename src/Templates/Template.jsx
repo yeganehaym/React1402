@@ -2,14 +2,21 @@ import {Sidebar} from "./Sidebar";
 import {NavBar} from "./NavBar";
 import {Footer} from "./Footer";
 import {useEffect} from "react";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
+import {isValid} from "../JwtService";
 
 export const Template=props=>{
 
     const navigate=useNavigate();
+    const loc=useLocation();
     useEffect(()=>{
-        //if(!props.show || props.show==false)
-          //  navigate('/login')
+
+        if(isValid()==false)
+        {
+            const url=loc.pathname;
+            navigate('/login?url=' + url);
+        }
+
 
     },[])
     return(<>
