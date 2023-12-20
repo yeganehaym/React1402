@@ -33,7 +33,7 @@ export const Template=props=>{
 
 
                     {
-                        props.show && props.show==true &&
+
                         props.children
                     }
 

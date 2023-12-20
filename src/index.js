@@ -21,6 +21,7 @@ import {Login} from "./Login";
 import {AuthTemplate} from "./Templates/AuthTemplate";
 import {Cal} from "./Cal";
 import {ToastContainer} from "react-toastify";
+import {Products} from "./Products";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -33,7 +34,8 @@ root.render(
                 <Route path={"/counter"} element={<Template><Counter/></Template>} />
                 <Route path={"/counters"} element={<Template><Counters/></Template>} />
                 <Route path={"/"} element={<Template/>} />
-                <Route path={"/products/new"} element={<Template show={true}><NewProduct/></Template>} />
+                <Route path={"/products/new"} element={<Template><NewProduct/></Template>} />
+                <Route path={"/products/list"} element={<Template ><Products/></Template>} />
                 <Route path={"/p/:id/:name"} element={<Template><CheckParams/></Template>} />
                 <Route path={"/player"} element={<Songs/>} />
                 <Route path={"/login"} element={<AuthTemplate><Login/></AuthTemplate>} />

@@ -1,7 +1,10 @@
 import {useState} from "react";
 import Joi from 'joi'
 import {messages} from "./joi_translation";
-import {useNavigate} from "react-router-dom";
+import {Await, useNavigate} from "react-router-dom";
+import {client} from "./AppAxios";
+import {toast} from "react-toastify";
+import * as productService from "./ProductService";
 
 export const NewProduct=(props)=>{
 
@@ -29,7 +32,7 @@ export const NewProduct=(props)=>{
 
     const navigate=useNavigate()
 
-    const save=(e)=>{
+    const save=async (e)=>{
         e.preventDefault();
 
         const validateResult=validate();
@@ -38,7 +41,18 @@ export const NewProduct=(props)=>{
 
 
         //save
-        navigate('/counter',{replace:true})
+
+        try {
+            const result=await productService.newProduct(product)
+            const {data}=result;
+            toast.success(data.message);
+        }
+        catch (e)
+        {
+            toast.error('خطا در درج محصول')
+        }
+
+
 
     }
 
@@ -63,7 +77,6 @@ export const NewProduct=(props)=>{
             .min(0)
             .required(),
         description:Joi.string()
-            .alphanum()
             .max(500)
             .required(),
     })

@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {axios} from "./AppAxios";
+import axios from "axios";
 import {useLocation, useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
 import queryString from 'query-string';

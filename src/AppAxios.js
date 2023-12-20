@@ -8,9 +8,10 @@ const instance = axios.create({
 
 instance.interceptors.response.use(null,error=>{
     console.log(error.response);
-    if(error.response && error.response.status==403)
+
+    if(error.response && (error.response.status==403 || error.response.status==401))
     {
-        toast.error('عدم دسترسی به سرور');
+        toast.error(error.response.data.error);
         return;
     }
     else if(error.response && error.response.status==404)
@@ -22,6 +23,7 @@ instance.interceptors.response.use(null,error=>{
 })
 const token=localStorage.getItem('token');
 instance.defaults.headers.common["authorization"]="Bearer " + token;
+
 export const client={
     get:instance.get,
     post:instance.post,
