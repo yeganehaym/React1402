@@ -40,7 +40,7 @@ var classCallCheck = function (instance, Constructor) {
 
 var ControlSidebar = function ($) {
   /**
-   * Constants
+   * Constants.js
    * ====================================================
    */
 
@@ -179,7 +179,7 @@ var ControlSidebar = function ($) {
 
 var Layout = function ($) {
   /**
-   * Constants
+   * Constants.js
    * ====================================================
    */
 
@@ -321,7 +321,7 @@ var Layout = function ($) {
 
 var PushMenu = function ($) {
   /**
-   * Constants
+   * Constants.js
    * ====================================================
    */
 
@@ -481,7 +481,7 @@ var PushMenu = function ($) {
 
 var Treeview = function ($) {
   /**
-   * Constants
+   * Constants.js
    * ====================================================
    */
 
@@ -652,7 +652,7 @@ var Treeview = function ($) {
 
 var Widget = function ($) {
   /**
-   * Constants
+   * Constants.js
    * ====================================================
    */
 

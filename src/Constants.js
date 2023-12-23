@@ -1,0 +1,1 @@
+export const fileSize=500*1024*1024; //500kb

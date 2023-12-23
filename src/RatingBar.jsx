@@ -19,10 +19,9 @@ export default class RatingBar extends Component{
         const clone={...this.state};
         clone.rate=rate;
         this.setState(clone);
-        toast('Your rating registered successfully ' + rate + ' of ' + this.state.rateCount,{
-            position:"bottom-center",
-            hideProgressBar: false,
-        })
+
+        this.props.onRateSet({rate,rateCount: this.state.rateCount})
+
     }
 
     createStar=(star)=>{
