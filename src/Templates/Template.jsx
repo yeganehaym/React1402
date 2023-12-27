@@ -3,7 +3,7 @@ import {NavBar} from "./NavBar";
 import {Footer} from "./Footer";
 import {useEffect} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
-import {isValid} from "../JwtService";
+import {isValid} from "../Services/JwtService";
 
 export const Template=props=>{
 

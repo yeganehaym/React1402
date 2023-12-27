@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
-import {client} from "./AppAxios";
-import * as productService from "./ProductService";
+import {client} from "../../Services/AppAxios";
+import * as productService from "../../Services/ProductService";
 import {toast} from "react-toastify";
-import RatingBar from "./RatingBar";
+import RatingBar from "../Shared/RatingBar";
 
 export const Products=()=>{
 

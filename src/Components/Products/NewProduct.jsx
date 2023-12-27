@@ -1,11 +1,11 @@
 import {useState} from "react";
 import Joi from 'joi'
-import {messages} from "./joi_translation";
-import {Await, useNavigate} from "react-router-dom";
-import {client} from "./AppAxios";
+import {messages} from "../../Utilities/joi_translation";
+import { useNavigate} from "react-router-dom";
+import {client} from "../../Services/AppAxios";
 import {toast} from "react-toastify";
-import * as productService from "./ProductService";
-import {fileSize} from "./Constants";
+import * as productService from "../../Services/ProductService";
+import {fileSize} from "../../Services/Constants";
 
 export const NewProduct=(props)=>{
 

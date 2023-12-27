@@ -1,4 +1,4 @@
-import {getName} from "../JwtService";
+import {getName} from "../Services/JwtService";
 
 export const UserNav=()=>{
     return(<>
