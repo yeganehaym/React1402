@@ -1,5 +1,7 @@
 import {useEffect, useState} from "react";
-
+import * as orderService from '../../Services/OrderService'
+import {toast} from "react-toastify";
+import {useNavigate} from "react-router-dom";
 export  const CheckOut=()=>{
 
     const [cart,setCart]=useState([]);
@@ -22,8 +24,26 @@ export  const CheckOut=()=>{
         setUser(u);*/
         setUser({...user, [name]:value})
     }
+
+    const navigate=useNavigate();
+    const submit=async e=>{
+        e.preventDefault();
+
+        try {
+            const result=await orderService.newOrder(cart,user);
+            if(result.status===200)
+            {
+                toast.success('Order is Created');
+                navigate('/');
+            }
+        }
+        catch (e) {
+
+        }
+
+    }
     return (<>
-    <form>
+    <form onSubmit={submit}>
         <div className={"form-group"}>
             <input type={"text"} name={"fullName"} value={user.fullName} onInput={onInput} className={"form-control"} placeholder={"Full Name"}/>
         </div>

@@ -13,13 +13,15 @@ import {Counter} from "../Tests/Counter";
 import {HomeUser} from "../Components/Home/HomeUser";
 import {Error404} from "../Components/Errors/Error404";
 import {CheckOut} from "../Components/Orders/CheckOut";
+import {OrderList} from "../Components/Orders/OrderList";
 
 const AppRoutes=()=>{
+
 
     return(<>
         <BrowserRouter>
             <Routes>
-                <Route path={"/counter"} element={<Template><Counter/></Template>} />
+                <Route path={ "/counter"} element={<Template><Counter/></Template>} />
                 <Route path={"/counters"} element={<Template><Counters/></Template>} />
                 <Route path={"/products/new"} element={<Template><NewProduct/></Template>} />
                 <Route path={"/products/list"} element={<Template ><Products/></Template>} />
@@ -29,6 +31,7 @@ const AppRoutes=()=>{
                 <Route path={"/cal"} element={<Cal/>} />
                 <Route path={"/"} element={<HomeUser/>} />
                 <Route path={"/checkout"} element={<CheckOut/>} />
+                <Route path={"/orders"} element={<Template><OrderList/></Template>} />
                 <Route path={"*"} element={<Error404/>} />
             </Routes>
         </BrowserRouter>
