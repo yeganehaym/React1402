@@ -1,12 +1,14 @@
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {ProductItem} from "../Shared/ProductItem";
 import * as productService from '../../Services/ProductService'
 import {CartItem} from "../Shared/CartItem";
 import {useNavigate} from "react-router-dom";
+import {ProductContext} from "../../Routes/Routes";
 
-export const HomeUser=()=>{
+export const HomeUser=(props)=>{
 
     const [products,setProducts]=useState([]);
+    const context=useContext(ProductContext);
 
     const getProducts=async ()=>{
 
@@ -14,6 +16,9 @@ export const HomeUser=()=>{
             const result=await productService.getProducts();
             const {data:products}=result;
             setProducts(products);
+            setProducts2(products);
+
+
         }
         catch (e)
         {
@@ -29,6 +34,8 @@ export const HomeUser=()=>{
         fetch();
 
     },[])
+
+
 
     const [cart,setCart]=useState([]);
     const addToCart=product=>{
@@ -89,6 +96,7 @@ export const HomeUser=()=>{
                                 }
 
 
+                                <button type={"button"} className={"btn btn-success"} onClick={()=>context.setCount(products.length)}>Update {context.search}</button>
                         </div>
                     </div>
                 </div>

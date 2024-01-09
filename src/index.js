@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createContext} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -8,12 +8,15 @@ import AppRoutes from "./Routes/Routes";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
 
     <>
 <ToastContainer />
 
-        <AppRoutes/>
+        <AppRoutes  />
+
+
     </>
 
 

@@ -25,6 +25,7 @@ export const Products=()=>{
             const result=await productService.getProducts()
             const {data:products}=result;
             setProducts(products)
+
         }
         catch (e)
         {
