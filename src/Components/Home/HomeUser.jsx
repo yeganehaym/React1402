@@ -4,16 +4,18 @@ import * as productService from '../../Services/ProductService'
 import {CartItem} from "../Shared/CartItem";
 import {useNavigate} from "react-router-dom";
 import {ProductContext} from "../../Routes/Routes";
+import {useDispatch, useSelector} from "react-redux";
 
 export const HomeUser=(props)=>{
 
     const [products,setProducts]=useState([]);
+    const [products2,setProducts2]=useState([]);
     const context=useContext(ProductContext);
 
     const getProducts=async ()=>{
 
         try {
-            const result=await productService.getProducts();
+            const result=await productService.getProducts(context.search);
             const {data:products}=result;
             setProducts(products);
             setProducts2(products);
@@ -35,6 +37,16 @@ export const HomeUser=(props)=>{
 
     },[])
 
+    useEffect(()=>{
+
+        let p=[...products2];
+        p=p.filter(x=>{
+            return x.name.toLowerCase().includes(context.search.toLowerCase());
+        });
+
+        setProducts(p);
+
+    },[context])
 
 
     const [cart,setCart]=useState([]);
@@ -66,6 +78,10 @@ export const HomeUser=(props)=>{
         localStorage.setItem('cart',JSON.stringify(cart))
         navigate('/checkout')
     }
+
+    const {theme}=useSelector(state=>state.theme)
+    const dispatch=useDispatch();
+
     return(
         <>
             <div className={"container-fluid"}>
@@ -97,6 +113,8 @@ export const HomeUser=(props)=>{
 
 
                                 <button type={"button"} className={"btn btn-success"} onClick={()=>context.setCount(products.length)}>Update {context.search}</button>
+                                <button type={"button"} className={"btn btn-danger"} onClick={()=>dispatch({type:'CHANGE',payload:(theme==='dark'?'light':'dark')})}>Update {context.search}</button>
+
                         </div>
                     </div>
                 </div>

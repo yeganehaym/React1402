@@ -15,6 +15,9 @@ import {Error404} from "../Components/Errors/Error404";
 import {CheckOut} from "../Components/Orders/CheckOut";
 import {OrderList} from "../Components/Orders/OrderList";
 import {UserTemplate} from "../Templates/UserTemplate";
+import {createStore} from "redux";
+import {Reducer} from "../Reducers";
+import {Provider} from "react-redux";
 export const ProductContext=createContext();
 
 const AppRoutes=()=>{
@@ -23,6 +26,8 @@ const AppRoutes=()=>{
     const [search,setSearch]=useState('')
 
     return(<>
+
+
         <ProductContext.Provider value={{productCount:count,setCount,search,setSearch}}>
         <BrowserRouter>
             <Routes>
@@ -40,6 +45,7 @@ const AppRoutes=()=>{
                 <Route path={"*"} element={<Error404/>} />
             </Routes>
         </BrowserRouter>
+
         </ProductContext.Provider>
 
     </>)

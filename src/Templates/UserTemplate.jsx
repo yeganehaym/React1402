@@ -1,6 +1,8 @@
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
 import {productStore} from "../Store/ProductStore";
 import {ProductContext} from "../Routes/Routes";
+import {useDispatch, useSelector} from "react-redux";
+import {ADD_Wallet, AddToWallet, SubFromWallet} from "../Actions";
 
 export const UserTemplate=props=>{
 
@@ -9,9 +11,17 @@ export const UserTemplate=props=>{
     const updateSearch=e=>{
         context.setSearch(e.target.value);
     }
+
+    const {wallet}=useSelector(state => state.fine);
+    const {theme}=useSelector(state => state.theme);
+
+    const dispatch=useDispatch();
+
+
+    console.log(wallet);
     return(<>
-        <nav className="navbar navbar-dark bg-dark justify-content-between">
-            <a className="navbar-brand">Navbar : {context.productCount} Products</a>
+        <nav className={theme==='dark'?"navbar navbar-dark bg-dark justify-content-between":"navbar navbar-light bg-light justify-content-between"}>
+            <a className="navbar-brand">Wallet : {wallet}  Navbar : {context.productCount} Products</a>
             <form className="form-inline">
                 <input className="form-control mr-sm-2" type="search" onInput={updateSearch}
                        placeholder="Search" aria-label="Search"/>
@@ -19,6 +29,9 @@ export const UserTemplate=props=>{
             </form>
         </nav>
 
+        <button className={"btn btn-success"} onClick={()=>dispatch(AddToWallet(1000))}>Add To Wallet 1000</button>
+        <button className={"btn btn-warning"} onClick={()=>dispatch(SubFromWallet(500))}>SUB To Wallet 500</button>
+        <button className={"btn btn-danger"} onClick={()=>dispatch({type:'ZERO'})}>No Money</button>
         <div>
             {props.children}
 

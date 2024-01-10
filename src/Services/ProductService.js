@@ -36,8 +36,8 @@ export const newProduct=async (product,callback)=>{
     })
 }
 
-export const getProducts=async ()=>{
-    return await client.get('/products')
+export const getProducts=async (search)=>{
+    return await client.get('/products?search='+search)
 }
 
 export const deleteProduct=async (name)=>{
