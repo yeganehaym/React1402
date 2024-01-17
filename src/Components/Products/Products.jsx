@@ -3,9 +3,12 @@ import {client} from "../../Services/AppAxios";
 import * as productService from "../../Services/ProductService";
 import {toast} from "react-toastify";
 import RatingBar from "../Shared/RatingBar";
+import {useDispatch, useSelector} from "react-redux";
 
 export const Products=()=>{
 
+    const p=useSelector(state=>state.product);
+    const dispatch=useDispatch();
     const [products,setProducts]=useState([])
     const [image,setImage]=useState('')
     useEffect(()=>{
@@ -19,6 +22,21 @@ export const Products=()=>{
         fetchData()
 
     },[])
+
+    useEffect(()=>{
+
+        const fetchData=async ()=>{
+            await getProducts()
+            const result=await productService.getImage();
+            setImage('data:image/jpeg;base64,' + result.data.image);
+        }
+
+        if(p.refresh===true)
+        {
+            fetchData()
+            dispatch({type:'UPDATE',payload:false})
+        }
+    },[p])
 
     const getProducts=async ()=>{
         try {
@@ -52,6 +70,8 @@ export const Products=()=>{
     }
 
     return (<>
+
+        {p.refresh + ""}
         <table className={"table table-bordered table-striped"}>
             <thead>
             <tr>

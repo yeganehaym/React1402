@@ -8,7 +8,7 @@ import AppRoutes from "./Routes/Routes";
 import {createStore} from "redux";
 import {Reducer} from "./Reducers";
 import {Provider} from "react-redux";
-
+import './Utilities/I18N'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 export  const store=createStore(Reducer);

@@ -1,0 +1,5 @@
+{
+  "Welcome to React": "Welcome to React and react-i18next",
+  "Hello":"Hello",
+  "age": "proper age is between {{age1}} and {{age2}}"
+}

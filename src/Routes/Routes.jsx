@@ -18,6 +18,9 @@ import {UserTemplate} from "../Templates/UserTemplate";
 import {createStore} from "redux";
 import {Reducer} from "../Reducers";
 import {Provider} from "react-redux";
+import {Mouse} from "../Components/Resources/Mouse";
+import {MultiLanguage} from "../Components/Resources/MultiLanguage";
+import {TestAPi} from "../Components/TestAPi";
 export const ProductContext=createContext();
 
 const AppRoutes=()=>{
@@ -42,6 +45,9 @@ const AppRoutes=()=>{
                 <Route path={"/"} element={<UserTemplate ><HomeUser/></UserTemplate>} />
                 <Route path={"/checkout"} element={<CheckOut/>} />
                 <Route path={"/orders"} element={<Template><OrderList/></Template>} />
+                <Route path={"/mouse"} element={<Mouse/>} />
+                <Route path={"/lang"} element={<MultiLanguage/>} />
+                <Route path={"/TestAPi"} element={<Template><TestAPi/></Template>} />
                 <Route path={"*"} element={<Error404/>} />
             </Routes>
         </BrowserRouter>

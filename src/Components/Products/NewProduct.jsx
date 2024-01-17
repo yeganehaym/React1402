@@ -6,8 +6,11 @@ import {client} from "../../Services/AppAxios";
 import {toast} from "react-toastify";
 import * as productService from "../../Services/ProductService";
 import {fileSize} from "../../Services/Constants";
+import {useDispatch} from "react-redux";
 
 export const NewProduct=(props)=>{
+
+    const dispatch=useDispatch();
 
 
     const [product,setProduct]=useState({
@@ -58,6 +61,7 @@ export const NewProduct=(props)=>{
             })
             const {data}=result;
             toast.success(data.message);
+            dispatch({type:'UPDATE',payload:true})
         }
         catch (e)
         {
