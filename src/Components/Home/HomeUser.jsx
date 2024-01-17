@@ -104,6 +104,10 @@ export const HomeUser=(props)=>{
 
                         <div className={"row"}>
 
+                            <div className={"alert alert-info"}>
+                                {process.env.REACT_APP_Text}
+                            </div>
+
                                 {
                                     products && products.length>0 &&
                                     products.map(product=><div className={"col-md-4"}>
